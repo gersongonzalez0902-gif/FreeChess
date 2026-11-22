@@ -1,0 +1,23 @@
+{
+  "name": "freechess",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Todo el ajedrez. Una sola plataforma. Gratis para todos.",
+  "license": "AGPL-3.0-or-later",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @freechess/web dev",
+    "build": "pnpm --filter @freechess/web build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:generate": "pnpm --filter @freechess/db generate",
+    "db:migrate": "pnpm --filter @freechess/db migrate",
+    "db:studio": "pnpm --filter @freechess/db studio"
+  }
+}

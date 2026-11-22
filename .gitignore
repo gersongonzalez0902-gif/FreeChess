@@ -1,0 +1,47 @@
+# Dependencias
+node_modules/
+.pnpm-store/
+
+# Construcción
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Variables de entorno (NUNCA subir secretos)
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel/
+
+# Pruebas y cobertura
+coverage/
+playwright-report/
+test-results/
+
+# Drizzle
+drizzle/meta/_journal.json.bak
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Registros
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Datos locales de importadores (archivos grandes descargados)
+scripts/import-puzzles/data/
+*.csv.zst
+*.zst
+
+# Skills externas (restaurables con npx skills; versiones fijadas en skills-lock.json)
+.claude/
