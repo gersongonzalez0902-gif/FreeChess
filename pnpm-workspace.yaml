@@ -1,3 +1,10 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+# Binarios con permiso para ejecutar scripts de instalación (formato pnpm 12):
+# esbuild (drizzle-kit), @tailwindcss/oxide (tailwind), sharp (imágenes, futuro).
+allowBuilds:
+  esbuild: true
+  "@tailwindcss/oxide": true
+  sharp: true
