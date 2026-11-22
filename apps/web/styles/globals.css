@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/*
+ * FreeChess — Sistema de diseño (Fase 1)
+ * Identidad: verde profundo. Tokens CSS + Tailwind 4 (@theme inline).
+ * Modo claro y modo oscuro completos (misma interfaz, dos paletas).
+ * El contraste AA de las combinaciones usadas se verifica en
+ * tests/unit/design-tokens.test.ts.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+ * Paleta de identidad (verde profundo) — no cambia entre temas.
+ * ------------------------------------------------------------------------- */
+:root {
+  --fc-green-950: #07331f;
+  --fc-green-900: #0a452a;
+  --fc-green-800: #0f5835;
+  --fc-green-700: #146b40;
+  --fc-green-600: #197e4b;
+  --fc-green-500: #22925c;
+  --fc-green-400: #4fb885;
+  --fc-green-300: #8fd6b4;
+}
+
+/* ---------------------------------------------------------------------------
+ * Tokens semánticos — MODO CLARO
+ * ------------------------------------------------------------------------- */
+:root {
+  --fc-bg: #f4f8f5;
+  --fc-surface: #ffffff;
+  --fc-surface-2: #eaf1ec;
+  --fc-border: #d8e3dc;
+  --fc-fg: #152620;
+  --fc-muted: #55685e;
+  --fc-accent: #35b57a;
+  --fc-accent-hover: #2ba369;
+  --fc-accent-fg: #04291a;
+  --fc-accent-text: #10693f;
+  --fc-danger: #b3362f;
+  --fc-danger-surface: #fbeeed;
+  --fc-warning: #8a5d0b;
+  --fc-focus: #178a58;
+  --fc-shadow: 0 1px 2px 0 rgb(21 38 32 / 0.06), 0 1px 3px 0 rgb(21 38 32 / 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+ * Tokens semánticos — MODO OSCURO (identidad por defecto)
+ * ------------------------------------------------------------------------- */
+.dark {
+  --fc-bg: #0a120d;
+  --fc-surface: #101a14;
+  --fc-surface-2: #17231c;
+  --fc-border: #24352b;
+  --fc-fg: #e9f2ec;
+  --fc-muted: #a4b9ac;
+  --fc-accent: #35b57a;
+  --fc-accent-hover: #47c48a;
+  --fc-accent-fg: #04291a;
+  --fc-accent-text: #6fd0a0;
+  --fc-danger: #f07a84;
+  --fc-danger-surface: #2a1417;
+  --fc-warning: #e0b64a;
+  --fc-focus: #52c48e;
+  --fc-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.4), 0 1px 3px 0 rgb(0 0 0 / 0.5);
+}
+
+/* ---------------------------------------------------------------------------
+ * Mapa a utilidades de Tailwind (inline para que respondan a .dark)
+ * ------------------------------------------------------------------------- */
+@theme inline {
+  --color-bg: var(--fc-bg);
+  --color-surface: var(--fc-surface);
+  --color-surface-2: var(--fc-surface-2);
+  --color-border: var(--fc-border);
+  --color-fg: var(--fc-fg);
+  --color-muted: var(--fc-muted);
+  --color-accent: var(--fc-accent);
+  --color-accent-hover: var(--fc-accent-hover);
+  --color-accent-fg: var(--fc-accent-fg);
+  --color-accent-text: var(--fc-accent-text);
+  --color-danger: var(--fc-danger);
+  --color-danger-surface: var(--fc-danger-surface);
+  --color-warning: var(--fc-warning);
+  --color-focus: var(--fc-focus);
+
+  --color-green-950: var(--fc-green-950);
+  --color-green-900: var(--fc-green-900);
+  --color-green-800: var(--fc-green-800);
+  --color-green-700: var(--fc-green-700);
+  --color-green-600: var(--fc-green-600);
+  --color-green-500: var(--fc-green-500);
+  --color-green-400: var(--fc-green-400);
+  --color-green-300: var(--fc-green-300);
+
+  --font-sans:
+    var(--font-inter, ui-sans-serif), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --shadow-card: var(--fc-shadow);
+}
+
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--fc-bg);
+    color: var(--fc-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--fc-accent) 30%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--fc-focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respetar prefers-reduced-motion (skill de diseño). */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Utilidades propias
+ * ------------------------------------------------------------------------- */
+@layer components {
+  /* Enlace "saltar al contenido" (accesibilidad por teclado). */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    padding: 0.625rem 1rem;
+    border-radius: 0.625rem;
+    background-color: var(--fc-accent);
+    color: var(--fc-accent-fg);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transform: translateY(-200%);
+    transition: transform 150ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+}
