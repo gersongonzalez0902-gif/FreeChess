@@ -1,0 +1,28 @@
+{
+  "name": "@freechess/db",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Esquemas Drizzle ORM, cliente Neon PostgreSQL y migraciones de FreeChess",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema/index.ts"
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "studio": "drizzle-kit studio",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@freechess/shared": "workspace:*",
+    "@neondatabase/serverless": "1.2.1",
+    "drizzle-orm": "0.45.4"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.11",
+    "typescript": "5.9.3",
+    "@types/node": "24.19.2"
+  }
+}
