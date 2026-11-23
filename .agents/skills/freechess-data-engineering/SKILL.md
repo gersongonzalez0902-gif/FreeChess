@@ -55,10 +55,10 @@ Fuente: `https://database.lichess.org/` — `lichess_db_puzzle.csv.zst`
    200k–500k puzzles mejor valorados y validados) y ampliar progresivamente,
    midiendo tamaño y rendimiento en Neon.
 8. Índices de la tabla puzzles: `(rating)` para selección por dificultad,
-   índice GIN sobre `themes` (array) para filtrar por tema, y `(popularity)`
-   para el puzzle diario. Crear índices DESPUÉS de la carga masiva.
+  índice GIN sobre `themes` (array) para filtrar por tema, y `(popularity)`
+  para el puzzle diario. Crear índices DESPUÉS de la carga masiva.
 9. La tabla guarda la fuente y fecha de importación (`import_batch`,
-   `imported_at`) para trazabilidad.
+  `imported_at`) para trazabilidad.
 
 ## 4. PGN y partidas
 
