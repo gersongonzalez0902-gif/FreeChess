@@ -10,8 +10,7 @@
 - Gestor de Agent Skills disponible: CLI `npx skills` (skills.sh) — genera
   `skills-lock.json` con repositorio, commit y hash de cada skill instalada.
 - Ubicación de skills externas en el proyecto: `.claude/skills/` (elección
-  del CLI al detectar el entorno). No se versionan en git: se restauran
-  con los comandos de la sección 2 (versiones fijadas en el lock).
+  del CLI al detectar el entorno).
 - Skills propias del proyecto: `.agents/skills/` (formato Agent Skills
   estándar: carpeta con `SKILL.md` y frontmatter `name` + `description`).
 - Sin duplicados: cada skill aparece en una única ubicación.

@@ -44,7 +44,7 @@
 - WebSockets, Redis, relojes sincronizados remotos, chat, torneos en vivo.
 - Planes de pago ni funciones bloqueadas por suscripción.
 
-## 3. Referencias investigadas (Fase 0)
+## 3. Referencias investiggadas (Fase 0)
 
 ### Chessigma (referencia principal)
 
@@ -113,5 +113,6 @@ Reglas de personalización:
 ## 7. Sostenibilidad
 
 Se planifica la sostenibilidad técnica y económica (costes de infraestructura
-  casi nulos: Vercel Hobby + Neon free + cómputo en el navegador), pero jamás
+
+casi nulos: Vercel Hobby + Neon free + cómputo en el navegador), pero jamás
 se convertirá en ventajas de pago para los jugadores.
