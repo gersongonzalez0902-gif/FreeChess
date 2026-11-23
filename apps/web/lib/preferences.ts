@@ -1,13 +1,13 @@
 "use client";
 
 import { userPreferencesSchema, type UserPreferences } from "@freechess/shared";
-import { authClient } from "@lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import {
   clearOutbox,
   enqueueOutbox,
   getLocalPreferences,
   putLocalPreferences,
-} from "@lib/local-db";
+} from "@/lib/local-db";
 
 /**
  * Gestión de preferencias en el cliente (ADR-007).
