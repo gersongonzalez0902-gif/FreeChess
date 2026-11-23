@@ -14,9 +14,11 @@ Sin planes premium. Sin funciones bloqueadas. Sin publicidad intrusiva.
 
 ## Estado del proyecto
 
-Fase 0 (preparación) completada. El desarrollo avanza por fases funcionales
-(0 a 8); el estado exacto está siempre en [PROJECT_STATUS.md](PROJECT_STATUS.md)
-y la ruta completa en [docs/ROADMAP.md](docs/ROADMAP.md).
+Fase 0 (preparación) completada. **Fase 1 (identidad y fundación) con el
+código completo y verificado localmente; queda aplicar la migración en Neon y
+configurar el despliegue en Vercel** — el estado exacto está siempre en
+[PROJECT_STATUS.md](PROJECT_STATUS.md) y la ruta completa en
+[docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Stack tecnológico
 
@@ -34,12 +36,12 @@ Todo el análisis de decisiones está en [docs/ARCHITECTURE.md](docs/ARCHITECTUR
 ## Estructura del repositorio
 
 ```text
-apps/web          Aplicación Next.js (desde la Fase 1)
-packages/         chess-core, chess-board, engine, db, shared, ui
+apps/web          Aplicación Next.js (implementada en la Fase 1)
+packages/         shared y db (Fase 1); chess-core, chess-board, engine, ui (Fase 2+)
 scripts/          import-puzzles, import-openings, seed, maintenance
 docs/             Documentación completa del proyecto
 .agents/skills/   Skills propias de FreeChess para el agente de desarrollo
-tests/            Pruebas de integración y E2E
+tests/            Pruebas unitarias (Vitest) y E2E (Playwright, Fase 2+)
 ```
 
 ## Documentación
@@ -57,12 +59,14 @@ tests/            Pruebas de integración y E2E
 
 ## Desarrollo
 
-Requisitos: Node.js 24+, pnpm 10+, una base de datos Neon PostgreSQL.
+Requisitos: Node.js 24+, pnpm 12+, una base de datos Neon PostgreSQL.
 
 ```bash
-pnpm install                  # dependencias (workspaces)
-cp .env.example .env          # configurar variables
-pnpm --filter web dev         # servidor de desarrollo (desde la Fase 1)
+pnpm install                        # dependencias (workspaces)
+cp .env.example apps/web/.env       # configurar variables
+pnpm dev                            # servidor de desarrollo
+pnpm test                           # pruebas unitarias
+pnpm db:migrate                     # aplicar migraciones (requiere DATABASE_URL)
 ```
 
 El proyecto lo desarrolla y mantiene un agente de IA siguiendo las skills
