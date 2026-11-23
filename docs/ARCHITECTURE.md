@@ -137,7 +137,7 @@ Arquitectura del motor (detallada en la skill `freechess-chess-engineering`):
 
 - Despliegue automático desde GitHub (ya conectado).
 - Variables de entorno: `DATABASE_URL` (Neon, solo servidor),
-  `AUTH_SECRET` (Better Auth), `PUBLIC_APP_URL`.
+  `BETTER_AUTH_SECRET` (Better Auth) y `PUBLIC_APP_URL`.
 - Neon ya conectado a Vercel (integración oficial): la variable de conexión
   se inyecta por entorno.
 - El importador de puzzles y las migraciones NO corren en el build de Vercel:
@@ -155,3 +155,6 @@ Arquitectura del motor (detallada en la skill `freechess-chess-engineering`):
 | ADR-006 | Puzzles en esquema `puzzles` separado, importación por lotes reanudable | Millones de filas sin afectar datos de usuarios | Fase 0 |
 | ADR-007 | Registro no obligatorio (modo invitado + IndexedDB con outbox de sincronización) | Probar sin fricción; sincronizar solo si se desea | Fase 0 |
 | ADR-008 | Sin Redis/WebSockets/microservicios | Fuera de alcance por diseño del producto | Fase 0 |
+| ADR-009 | Tablas de Better Auth con ids `text` (uuid v4 en cliente) en el esquema pg `auth`; el resto de tablas mantiene `uuid` | Requisito del adaptador Drizzle de Better Auth; se preserva el borrado en cascada y el diseño por esquemas | Fase 1 |
+| ADR-010 | Componentes UI de Fase 1 en `apps/web/components`; `packages/ui` se llena en Fase 2 | No crear paquetes sin consumidor: `packages/ui` se alimenta cuando `chess-board` necesite sus componentes | Fase 1 |
+| ADR-011 | Tema y preferencias de UI leídas como almacén externo (`useSyncExternalStore` + script anti-destello) | Hidratación segura sin setState en efectos y sin destello de tema incorrecto | Fase 1 |

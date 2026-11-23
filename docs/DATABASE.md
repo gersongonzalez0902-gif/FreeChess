@@ -21,7 +21,12 @@
 
 ### Esquema `auth` (Better Auth)
 
-Generadas por el adaptador Drizzle de Better Auth:
+Generadas por el adaptador Drizzle de Better Auth. **Nota (ADR-009):** los
+ids de estas tablas son `text` con UUID v4 (requisito de Better Auth); el
+resto de tablas del proyecto mantiene `uuid` de PostgreSQL. Migración `0000`
+(Fase 1) crea `auth` (user, session, account, verification) y el arranque de
+`core` (profiles, user_preferences); las tablas restantes llegan con las
+migraciones de sus fases.
 
 | Tabla | Propósito |
 |---|---|
@@ -90,7 +95,7 @@ Generadas por el adaptador Drizzle de Better Auth:
 
 | Tabla | Campos clave | Notas |
 |---|---|---|
-| `puzzles` | puzzle_id PK (texto), fen, moves (línea UCI), rating, rating_deviation, popularity, nb_plays, themes (text[]), game_url, opening_tags (text[]), import_batch, imported_at | Fuente CC0 Lichess; índices: rating (btree), themes (GIN), popularity. Se crean tras la carga masiva |
+| `puzzles` | puzzle_id PK (texto), fen, moves (línea UCI), rating, rating_deviation, popularity, nb_plays, themes (text[]), game_url, opening_tags (text[]), import_batch, imported_at | Fuente CC0 Lichess; índices: rating (btree), themes (GIN), popularity (btree). Se crean tras la carga masiva |
 | `import_logs` | id, batch, fila, error, created_at | Reanudar importaciones |
 
 ## 3. Estimaciones y estrategia de volumen
