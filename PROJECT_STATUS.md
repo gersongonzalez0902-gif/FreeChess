@@ -60,21 +60,24 @@ verificado antes de producción).
 1. **Aplicar la migración en Neon**: `DATABASE_URL=… pnpm db:migrate` desde
    el sandbox (necesita la cadena de conexión del panel de Neon; las
    migraciones NO corren en el build de Vercel, ADR-008).
-2. **Vercel**: configurar Root Directory = `apps/web` y las variables
-   `BETTER_AUTH_SECRET` y `PUBLIC_APP_URL` (la integración Neon ya inyecta
-   `DATABASE_URL`). Guía paso a paso entregada al usuario.
+2. **Vercel**: Root Directory = `apps/web` ya configurado por el usuario.
+   Corregido el fallo de instalación (npm no soporta `workspace:*`) añadiendo
+   `apps/web/vercel.json` con `installCommand` de pnpm 12.21.0. Faltan las
+   variables `BETTER_AUTH_SECRET` y `PUBLIC_APP_URL` (la integración Neon ya
+   inyecta `DATABASE_URL`). Guía paso a paso entregada al usuario.
 3. Verificar el despliegue en producción (registro/login reales con Neon).
 
 ## Problemas conocidos
 
 1. **Plugin de Vercel sin acceso** (cuenta personal Hobby): se gestiona Vercel
    desde la web; cada push a `main` despliega automáticamente.
-2. **`pnpm-lock.yaml` no está en GitHub** (204 KB; la API del plugin solo
-   sube texto inline y el agente no tiene credenciales git). Consecuencia:
-   Vercel instala sin lockfile (versiones fijadas en los package.json, así
-   que el árbol directo es determinista; los transitorios pueden variar).
-   Solución futura: credenciales git para el agente o plugin con subida de
-   archivos grandes.
+2. **`pnpm-lock.yaml` no se puede subir por la API de GitHub** (204 KB; el
+   agente no tiene credenciales git y el token del plugin no tiene permiso
+   para escribir en `.github/workflows/`). **Mitigación (2026-11-23)**:
+   `apps/web/vercel.json` fuerza `pnpm install --no-frozen-lockfile` (el
+   build funciona sin lockfile); queda pendiente que el usuario cree el
+   workflow `.github/workflows/lockfile.yml` (contenido entregado) que
+   regenera y commitea el lockfile automaticamente.
 3. La recuperación de contraseña necesita un servicio de correo (SMTP);
    se diseñará cuando se active (Better Auth ya trae el flujo). No hay
    botón hasta que funcione de verdad.
@@ -95,6 +98,12 @@ verificado antes de producción).
 
 ## Últimas modificaciones
 
+- **2026-11-23 — Corrección de despliegue en Vercel**: el build fallaba con
+  `EUNSUPPORTEDPROTOCOL "workspace:*"` porque, sin `pnpm-lock.yaml` en el
+  repo, Vercel instalaba con npm. Añadido `apps/web/vercel.json` con
+  installCommand de pnpm 12.21.0. El workflow que regenera el lockfile está
+  preparado para que el usuario lo cree en GitHub (el token del plugin no
+  puede escribir en `.github/workflows/`).
 - **2026-11-23 — Fase 1 (código)**: apps/web completa + packages/db y shared,
   migración generada, 21 pruebas, verificación visual en navegador
   (dashboard claro/oscuro, escritorio y móvil, formularios y menús).
@@ -104,4 +113,4 @@ verificado antes de producción).
 1. Cerrar la Fase 1: migración en Neon + configuración Vercel + verificación
    del despliegue (guía entregada al usuario).
 2. Fase 2: `packages/chess-board` (envoltorio chessground), `packages/engine`
-   (Stockfish en Worker), jugar contra bots y partidas en el mismo dispositivo.
+  (Stockfish en Worker), jugar contra bots y partidas en el mismo dispositivo.
