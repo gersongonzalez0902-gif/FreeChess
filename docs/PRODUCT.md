@@ -113,6 +113,5 @@ Reglas de personalización:
 ## 7. Sostenibilidad
 
 Se planifica la sostenibilidad técnica y económica (costes de infraestructura
-
 casi nulos: Vercel Hobby + Neon free + cómputo en el navegador), pero jamás
 se convertirá en ventajas de pago para los jugadores.
