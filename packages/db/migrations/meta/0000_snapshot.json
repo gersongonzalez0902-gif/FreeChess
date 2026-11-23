@@ -356,7 +356,7 @@
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true,
-          "default": "'{}'::jsonb"
+          "default": "'{\"wins\":0,\"losses\":0,\"draws\":0}'::jsonb"
         },
         "created_at": {
           "name": "created_at",
@@ -439,14 +439,14 @@
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true,
-          "default": "'{}'::jsonb"
+          "default": "'{\"enabled\":false,\"move\":0.7,\"capture\":0.8,\"end\":0.9,\"ui\":0.5}'::jsonb"
         },
         "board": {
           "name": "board",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true,
-          "default": "'{}'::jsonb"
+          "default": "'{\"coordinates\":true,\"animation\":true,\"highlightLastMove\":true}'::jsonb"
         },
         "created_at": {
           "name": "created_at",
