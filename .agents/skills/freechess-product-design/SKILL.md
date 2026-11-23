@@ -61,11 +61,11 @@ Toda superficie interactiva debe definir:
 7. Transiciones cortas (150–250 ms) solo en propiedades transform/opacity.
 
 Sonidos: opcionales, apagados por defecto, con volumen independiente por
-  categoría (movimientos, capturas, fin de partida, interfaz).
+categoría (movimientos, capturas, fin de partida, interfaz).
 
 ## 5. Accesibilidad (criterios de aceptación)
 
-- Contraste AA mínimo en todo texto y contores.
+- Contraste AA mínimo en todo texto y controles.
 - Navegación completa por teclado (tablero incluido: selección de casilla con
   Enter, movimiento con flechas, anuncio de jugada para lectores de pantalla).
 - Etiquetas `aria` en controles de iconos; `role` y estados correctos.
@@ -84,7 +84,7 @@ Sonidos: opcionales, apagados por defecto, con volumen independiente por
   primera vez (ej. "PGN (el formato estándar para guardar partidas").
 - Los términos de ajedrez usan la nomenclatura española oficial
   ("tablas", "enroque", "captura al paso", "ahogado").
-- Números y fechas localizadas; evaluaciones en peones con 2 decimales y
+- Números y fechas localizados; evaluaciones en peones con 2 decimales y
   mates como "Mate en 3".
 
 ## 7. Lo que FreeChess NO es
