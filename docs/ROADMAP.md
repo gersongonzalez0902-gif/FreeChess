@@ -21,19 +21,24 @@
 - [x] Estructura del repositorio y documentación completa.
 - **Entregable:** proyecto preparado para el desarrollo.
 
-## FASE 1 — Identidad y fundación
+## FASE 1 — Identidad y fundación (EN CURSO: código completo y verificado; falta despliegue)
 
-- [ ] Scaffold de `apps/web` (Next.js 16 + TS estricto + Tailwind 4 + ESLint/Prettier).
-- [ ] Sistema visual: tokens de color (verde profundo), tipografía, espaciado.
-- [ ] Modo claro y modo oscuro completos.
-- [ ] Navegación lateral (escritorio) e inferior (móvil); 10 secciones.
-- [ ] Dashboard: saludo, actividad, acceso rápido, plan de hoy, progreso.
-- [ ] Perfil y preferencias (piezas, tablero, sonidos).
-- [ ] Better Auth: registro, inicio/cierre de sesión, recuperación; modo
-  invitado sin registro obligatorio.
-- [ ] Conexión Neon + Drizzle + primera migración (esquemas `auth` y `core`).
-- [ ] IndexedDB: preferencias y datos de invitado (con outbox de sincronización).
-- [ ] Layout responsive verificado en escritorio, tablet y móvil.
+- [x] Scaffold de `apps/web` (Next.js 16 + TS estricto + Tailwind 4 + ESLint/Prettier).
+- [x] Sistema visual: tokens de color (verde profundo), tipografía, espaciado.
+- [x] Modo claro y modo oscuro completos (con modo sistema y sin destellos).
+- [x] Navegación lateral (escritorio) e inferior (móvil); 10 secciones.
+- [x] Dashboard: saludo, actividad, acceso rápido, plan de hoy, progreso.
+- [x] Perfil y preferencias (tema, idioma, cuenta, datos locales; piezas/
+  tablero/sonidos se exponen en Fase 2, cuando tienen efecto real).
+- [x] Better Auth: registro, inicio/cierre de sesión (recuperación pendiente
+  de servicio de correo); modo invitado sin registro obligatorio.
+- [x] Conexión Neon + Drizzle + primera migración (esquemas `auth` y `core`)
+  — SQL generado; **aplicación en Neon pendiente** (guía entregada).
+- [x] IndexedDB: preferencias y datos de invitado (con outbox de sincronización).
+- [x] Layout responsive verificado en escritorio y móvil, claro y oscuro
+  (revisión visual automatizada + 16 pruebas de contraste WCAG AA).
+- [ ] Despliegue en Vercel verificado (Root Directory + variables de entorno
+  + migración aplicada; ver `PROJECT_STATUS.md`).
 - **Entregable:** aplicación visual y funcional desplegada en Vercel.
 
 ## FASE 2 — Experiencia de juego

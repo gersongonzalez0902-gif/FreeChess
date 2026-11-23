@@ -29,13 +29,18 @@ futura (con código fuente compartido, sin muros de pago).
 | `stockfish` (nmrugg) | 19.0.1 | GPL-3.0 | Motor WASM en navegador | npm |
 | `@lichess-org/stockfish-web` | v0.6.1 (nov 2026) | GPL-3.0 | Alternativa de motor (Fase 3) | Repo lichess-org/stockfish-web |
 | `next` | 16.4.6 | MIT | Framework | npm |
-| `react` / `react-dom` | 19.x | MIT | UI | npm |
-| `tailwindcss` | 4.x | MIT | Estilos | npm |
-| `drizzle-orm` / `drizzle-kit` | 0.45.4 | Apache-2.0 | ORM/migraciones | npm |
+| `react` / `react-dom` | 19.3.1 | MIT | UI | npm |
+| `tailwindcss` / `@tailwindcss/postcss` | 4.3.5 | MIT | Estilos | npm |
+| `drizzle-orm` | 0.45.4 | Apache-2.0 | ORM (esquemas y consultas) | npm |
+| `drizzle-kit` | 0.31.11 | Apache-2.0 | Migraciones versionadas | npm (corregido en Fase 1: la versión 0.45.4 anotada en Fase 0 era de drizzle-orm) |
 | `better-auth` | 1.7.27 | MIT | Autenticación | npm |
-| `zustand` | 5.x | MIT | Estado de partida | npm |
+| `@neondatabase/serverless` | 1.2.1 | MIT | Driver HTTP de Neon PostgreSQL | npm |
+| `zod` | 4.6.7 | MIT | Validación de datos (API y preferencias) | npm |
+| `lucide-react` | 1.77.0 | ISC | Iconografía (único set de iconos) | npm |
+| `zustand` | 5.x | MIT | Estado de partida (Fase 2) | npm |
 | `recharts` | 2.x/3.x | MIT | Gráficas (Fase 8) | npm |
 | `serwist` | 9.x | MIT | PWA / Service Worker | npm |
+| `eslint` / `eslint-config-next` / `prettier` / `vitest` | 9.39.3 / 16.4.6 / 3.10.1 / 5.1.1 | MIT | Calidad y pruebas (desarrollo) | npm |
 
 Descartadas con motivo: `chess.js` (BSD-2, solo pruebas de contraste),
 `react-chessboard` (MIT, funcionalmente inferior), `lila-stockfish-web`
@@ -104,4 +109,14 @@ Descartadas con motivo: `chess.js` (BSD-2, solo pruebas de contraste),
    pasa primero por este documento.
 5. **Actualización**: se re-verifica este inventario al añadir cualquier
    recurso nuevo y al comienzo de cada fase que incorpore material externo
-   (Fase 2: piezas/sonidos; Fase 4: puzzles; Fase 7: aperturas/cursos).
+   (Fase 1: lucide-react/Inter/zod/driver Neon; Fase 2: piezas/sonidos;
+   Fase 4: puzzles; Fase 7: aperturas/cursos).
+
+## 6. Tipografías (Fase 1)
+
+| Recurso | Uso | Licencia | Verificación |
+|---|---|---|---|
+| [Inter](https://rsms.me/inter/) | Tipografía de la interfaz, autoalojada por `next/font` (sin llamadas a Google en producción) | SIL Open Font License 1.1 | fonts.google.com/specimen/Inter + rsms.me/inter |
+
+Atribuciones visibles en `apps/web/public/ATTRIBUTIONS.md` (Ajustes →
+Créditos y licencias).
